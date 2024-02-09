@@ -1,8 +1,8 @@
 import itertools
 from collections import Counter
 
-TESTLIST = [34060,56380,294000,14536,45800,72328,16959,11722.15,203104,39785.7]
-PERCENTAGE = 0.4
+TESTLIST = [1,5,3,2,5]
+PERCENTAGE = 0.6
 
 def divideInTwoBaskets(numList):
     suma = sum(numList)
@@ -15,7 +15,6 @@ def divideInTwoBaskets(numList):
         if(score < bestScore):
             bestBasket = basket
             bestScore = abs(sum(basket) - suma*PERCENTAGE)
-            print(score)
     return list(bestBasket.elements()), list((Counter(numList) - bestBasket).elements()), bestScore
 
 
@@ -32,9 +31,9 @@ def getRandomBaskets(numList):
      
 def main(numList):
     batch40, batch60, dif = divideInTwoBaskets(numList)
-    print("40% batch is ", batch40)
-    print("60% batch is ", batch60)
-    print("The diffenrence between ideal split is ", dif)
+    print(PERCENTAGE*100, "% batch is ", batch40)
+    print((1-PERCENTAGE)*100, "% batch is ", batch60)
+    print("The difference between ideal split is ", dif)
 
 main(TESTLIST)
     
